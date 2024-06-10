@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ouça agora uma bela música</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: black;
+      transition: background-color 1s;
+    }
+    
+    .botao {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+
+    .botao.oculto {
+      opacity: 0;
+    }
+
+    .mensagem {
+      font-size: 32px;
+      margin-bottom: 20px;
+      background-color: white;
+      padding: 10px;
+      display: none; /* Adicionamos a propriedade display: none; para ocultar inicialmente a caixa de texto */
+    }
+
+    .imagem {
+      max-width: 100%;
+      height: auto;
+      max-height: calc(100vh - 200px); /* Subtraímos 200px para considerar o tamanho do botão e da mensagem */
+    }
+
+    .escondido {
+      display: none;
+    }
+
+    .gradiente {
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    }
+
+    @keyframes pular {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <script>
+    function mostrarTexto() {
+      var texto = "Não sabia que você ouvia essas coisas!";
+      document.getElementById("mensagem").innerHTML = texto;
+      document.getElementById("imagem").classList.remove("escondido");
+      document.body.classList.add("gradiente");
+      document.getElementById("botao").classList.add("oculto");
+      document.getElementById("mensagem").style.display = "block"; // Exibimos a caixa de texto quando o botão é clicado
+      var audio = new Audio("https://github.com/brendaSlongoTaca/Audios/raw/main/N%C3%A3o%20abrir%2C%20gem.mp3");
+      audio.play();
+    }
+  </script>
+</head>
+<body>
+  <button id="botao" class="botao" onclick="mostrarTexto()">Clique aqui para ouvir a música!</button>
+  <p id="mensagem" class="mensagem"></p>
+  <img id="imagem" class="imagem escondido" src="https://pt-static.z-dn.net/files/d93/84f999050d71935f037032b819bf1716.jpg" alt="Gato chocado.">
+</body>
+</html>
